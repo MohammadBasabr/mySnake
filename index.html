@@ -12,12 +12,15 @@
 
 <body onload="windowload()">
     <main>
-        <canvas width="400" height="400" id="cvs"></canvas>
-        <div>
-            <span id="score" style="border: 1px solid black; padding: 1rem;"></span>
-            <span id="bestscore" style="border: 1px solid black; padding: 1rem;"></span>
+        <div id="game">
+
+            <canvas width="400" height="400" id="cvs"></canvas>
+            <div>
+                <span id="score" style="border: 1px solid black; padding: 1rem;"></span>
+                <span id="bestscore" style="border: 1px solid black; padding: 1rem;"></span>
+            </div>
+            <button><img src="./image/Mute_Icon.svg" id="btnmute" onclick="enableMute()" type="button" alt=""></button>
         </div>
-        <button><img src="./image/Mute_Icon.svg" id="btnmute" onclick="enableMute()" type="button" alt=""></button>
     </main>
     <!--  -->
     <script src="./app.js"></script>

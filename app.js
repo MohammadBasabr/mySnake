@@ -4,40 +4,19 @@ var score = 0;
 var bestscore = 0;
 var grid = 16;
 var count = 0;
-var music = new Audio("./sound/Ave-Air.mp3");
-var snake = {
-  x: 160,
-  y: 160,
-
-  // snake directin offsets
-  dx: grid,
-  dy: 0,
-
-  // snake body
-  cells: [],
-
-  // snake body length, grows when eats an apple
-  maxCells: 4,
-};
-
-var apple = {
-  x: 320,
-  y: 320,
-};
+var music = new Audio("./sound/story.mp3");
+var musicPicked = new Audio("./sound/Picked3.mp3");
+var mutebtn = document.getElementById("btnmute");
 //
 //
 //
 function enableMute() {
   if (music.muted) {
     music.muted = false;
-    document
-      .getElementById("btnmute")
-      .setAttribute("src", "./image/Speaker_Icon.svg");
+    mutebtn.setAttribute("src", "./image/Mute_Icon.svg");
   } else {
     music.muted = true;
-    document
-      .getElementById("btnmute")
-      .setAttribute("src", "./image/Mute_Icon.svg");
+    mutebtn.setAttribute("src", "./image/Speaker_Icon.svg");
   }
 }
 //
@@ -48,8 +27,7 @@ function windowload() {
   canvas.setAttribute("tabindex", "0");
   canvas.focus();
   context = canvas.getContext("2d");
-  music.play();
-
+  
   // arrow keys to control the snake
   document.addEventListener("keydown", function (e) {
     //   console.log(e.key);
@@ -76,23 +54,28 @@ function windowload() {
     }
   });
   window.requestAnimationFrame(loop);
+  music.play();
 }
-//
 //
 //
 // return a random integer between [min, max)
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-
+//
+//
+//
 function showScore(score) {
   document.getElementById("score").innerHTML = score;
 }
-
+//
+//
+//
 function showBestScore(score) {
   document.getElementById("bestscore").innerHTML = score;
 }
-
+//
+//
 // reset the game
 function resetGame() {
   snake.x = 160;
@@ -154,12 +137,12 @@ function loop() {
 
     // snake ate apple
     if (cell.x === apple.x && cell.y === apple.y) {
+      musicPicked.play();
       snake.maxCells++;
-
       // canvas is 400x400 which is 25x25 grids
       apple.x = getRandomInt(0, 25) * grid;
       apple.y = getRandomInt(0, 25) * grid;
-
+      
       score++;
       bestscore = Math.max(bestscore, score);
       showBestScore(bestscore);
@@ -176,7 +159,30 @@ function loop() {
     }
   });
 }
+//
+//
+//
+var snake = {
+  x: 160,
+  y: 160,
 
+  // snake directin offsets
+  dx: grid,
+  dy: 0,
+
+  // snake body
+  cells: [],
+
+  // snake body length, grows when eats an apple
+  maxCells: 4,
+};
+//
+//
+//
+var apple = {
+  x: 320,
+  y: 320,
+};
 // window.addEventListener("keydown", this.check, false);
 // function check(e) {
 //   var code = e.keyCode;
