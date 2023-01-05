@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mySnake</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./button.css">
 </head>
 
 <body onload="windowload()">
     <main>
         <canvas width="400" height="400" id="cvs"></canvas>
-        <span id="score" style="border: 1px solid black; padding: 1rem;"></span>
-        <span id="bestscore" style="border: 1px solid black; padding: 1rem;"></span>
+        <div>
+            <span id="score" style="border: 1px solid black; padding: 1rem;"></span>
+            <span id="bestscore" style="border: 1px solid black; padding: 1rem;"></span>
+        </div>
+        <button><img src="./image/Mute_Icon.svg" id="btnmute" onclick="enableMute()" type="button" alt=""></button>
     </main>
     <!--  -->
     <script src="./app.js"></script>

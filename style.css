@@ -24,6 +24,12 @@ main{
     top: 10vh;
     /*  */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 } 
+/*  */
+canvas{
+    background-color: rgba(20, 20, 20, 0.4);
+    border-radius: 10px;
+}

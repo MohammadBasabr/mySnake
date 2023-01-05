@@ -1,15 +1,10 @@
-// let cvs = document.getElementById("cvs"),
-//   ctx = cvs.getContext("2d");
-
-// cvs.width = cvs.height = 500;
-//
 var context;
 var canvas;
 var score = 0;
 var bestscore = 0;
 var grid = 16;
 var count = 0;
-
+var music = new Audio("./sound/Ave-Air.mp3");
 var snake = {
   x: 160,
   y: 160,
@@ -32,16 +27,33 @@ var apple = {
 //
 //
 //
+function enableMute() {
+  if (music.muted) {
+    music.muted = false;
+    document
+      .getElementById("btnmute")
+      .setAttribute("src", "./image/Speaker_Icon.svg");
+  } else {
+    music.muted = true;
+    document
+      .getElementById("btnmute")
+      .setAttribute("src", "./image/Mute_Icon.svg");
+  }
+}
+//
+//
+//
 function windowload() {
   canvas = document.getElementById("cvs");
   canvas.setAttribute("tabindex", "0");
   canvas.focus();
   context = canvas.getContext("2d");
-  
+  music.play();
+
   // arrow keys to control the snake
-    document.addEventListener("keydown", function (e) {
+  document.addEventListener("keydown", function (e) {
     //   console.log(e.key);
-      var code = e.key;
+    var code = e.key;
     // left arrow key
     if (code === "ArrowLeft" && snake.dx === 0) {
       snake.dx = -grid;
